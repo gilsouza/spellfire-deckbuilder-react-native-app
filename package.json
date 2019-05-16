@@ -10,7 +10,8 @@
         "react": "16.8.3",
         "react-native": "0.59.8",
         "react-native-gesture-handler": "^1.2.1",
-        "react-navigation": "^3.9.2"
+        "react-navigation": "^3.9.2",
+        "typesafe-actions": "^4.3.0"
     },
     "devDependencies": {
         "@babel/core": "7.4.4",
@@ -18,6 +19,7 @@
         "@types/jest": "24.0.13",
         "@types/react": "^16.8.17",
         "@types/react-native": "^0.57.56",
+        "@types/react-redux": "^7.0.9",
         "@types/react-test-renderer": "16.8.1",
         "@typescript-eslint/eslint-plugin": "^1.9.0",
         "@typescript-eslint/parser": "^1.9.0",
@@ -31,6 +33,7 @@
         "jest": "24.8.0",
         "metro-react-native-babel-preset": "0.54.1",
         "prettier": "^1.17.1",
+        "react-redux": "^7.0.3",
         "react-test-renderer": "16.8.3",
         "typescript": "3.4.5"
     },
