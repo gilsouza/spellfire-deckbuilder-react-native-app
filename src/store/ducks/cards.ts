@@ -52,7 +52,22 @@ export const loadSuccess = (data: Card[]) => action(CardsTypes.LOAD_SUCCESS, dat
 export const loadFailure = () => action(CardsTypes.LOAD_FAILURE);
 
 const INITIAL_STATE: CardsState = {
-    data: [],
+    data: [
+        {
+            cIndex: 1,
+            collection: '',
+            number: 1,
+            bonus: '',
+            type: '',
+            world: '',
+            title: 'lalala',
+            text: '',
+            frequency: '',
+            blueline: '',
+            aIndex: 1,
+            uIndex: 1,
+        },
+    ],
     error: false,
     loading: false,
 };

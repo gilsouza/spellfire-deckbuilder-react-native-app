@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Provider } from 'react-redux';
+
+import CardList from './../components/CardList';
+
+import store from './../store';
 
 export default class Main extends Component {
     static navigationOptions = {
@@ -8,9 +12,9 @@ export default class Main extends Component {
 
     render() {
         return (
-            <View>
-                <Text>Teste</Text>
-            </View>
+            <Provider store={store}>
+                <CardList />
+            </Provider>
         );
     }
 }
