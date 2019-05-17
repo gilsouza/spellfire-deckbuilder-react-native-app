@@ -1,21 +1,38 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'; //Por botao
+import { createMaterialTopTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'; //Por botao
 
-import Main from './pages/main';
+import SearchScreen from './pages/searchScreen';
+import ResultDetailsScreen from './pages/resultDetailsScreen';
+import DeckInfoScreen from './pages/deckScreen';
 
-const NavStack = createStackNavigator(
+const tabDeckNavigation = createMaterialTopTabNavigator(
     {
-        Main,
+        search: SearchScreen,
+        detail: ResultDetailsScreen,
+        deck: DeckInfoScreen,
     },
     {
-        defaultNavigationOptions: {
-            headerStyle: {
+        tabBarOptions: {
+            style: {
                 backgroundColor: '#9e9e9e',
             },
-            headerTintColor: '#000',
         },
     },
 );
 
-const App = createAppContainer(NavStack);
+const navStack = createStackNavigator(
+    {
+        home: tabDeckNavigation,
+    },
+    {
+        defaultNavigationOptions: {
+            title: 'Spellfire Deck Builder',
+            headerStyle: {
+                backgroundColor: '#9e9e9e',
+            },
+            headerTintColor: '#FFF',
+        },
+    },
+);
+const App = createAppContainer(navStack);
 
 export default App;

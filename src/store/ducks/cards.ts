@@ -47,9 +47,9 @@ export interface CardsState {
 }
 
 /** actions */
-export const loadRequest = () => action(CardsTypes.LOAD_REQUEST);
-export const loadSuccess = (data: Card[]) => action(CardsTypes.LOAD_SUCCESS, data);
-export const loadFailure = () => action(CardsTypes.LOAD_FAILURE);
+export const loadRequestAction = () => action(CardsTypes.LOAD_REQUEST);
+export const loadSuccessAction = (data: Card[]) => action(CardsTypes.LOAD_SUCCESS, data);
+export const loadFailureAction = () => action(CardsTypes.LOAD_FAILURE);
 
 const INITIAL_STATE: CardsState = {
     data: [

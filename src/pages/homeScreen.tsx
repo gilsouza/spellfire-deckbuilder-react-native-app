@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import CardList from './../components/CardList';
+import CardList from '~/components/CardList';
 
-import store from './../store';
+import store from '~/store';
 
-export default class Main extends Component {
+export default class HomeScreen extends Component {
     static navigationOptions = {
-        title: 'Spellfire DeckBuilder',
+        title: 'Home',
     };
 
     render() {

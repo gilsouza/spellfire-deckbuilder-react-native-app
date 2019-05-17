@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import { ApplicationState } from '../../store';
 import { connect } from 'react-redux';
-import { Card, loadFailure, loadRequest, loadSuccess } from '../../store/ducks/cards';
+import { Card, loadFailureAction, loadRequestAction, loadSuccessAction } from '../../store/ducks/cards';
 
 interface StateProps {
     cards: Card[];
@@ -41,7 +41,10 @@ const mapStateToProps = (state: ApplicationState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
-    bindActionCreators({ loadFailure, loadRequest, loadSuccess }, dispatch);
+    bindActionCreators(
+        { loadFailure: loadFailureAction, loadRequest: loadRequestAction, loadSuccess: loadSuccessAction },
+        dispatch,
+    );
 
 export default connect(
     mapStateToProps,
