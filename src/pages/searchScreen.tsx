@@ -5,7 +5,7 @@ import CardList from '~/components/CardList';
 
 import store from '~/store';
 
-import { Lalala } from '~/components/elements/index';
+import { Lalala } from '~/components/FormSearch/index';
 import { View } from 'react-native';
 
 export default class SearchScreen extends Component {
