@@ -5,7 +5,7 @@ import CardList from '~/components/CardList';
 
 import store from '~/store';
 
-import { Lalala } from '~/components/FormSearch/index';
+// import { Lalala } from '~/components/FormSearch/index';
 import { View } from 'react-native';
 
 export default class SearchScreen extends Component {
@@ -17,7 +17,7 @@ export default class SearchScreen extends Component {
         return (
             <Provider store={store}>
                 <View>
-                    <Lalala />
+                    <CardList />
                 </View>
             </Provider>
         );
