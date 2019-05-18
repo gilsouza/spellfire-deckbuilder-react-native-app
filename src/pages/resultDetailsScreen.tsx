@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import CardList from '~/components/CardList';
 
 import store from '~/store';
+import { View } from 'react-native';
 
 export default class ResultDetailsScreen extends Component {
     static navigationOptions = {
@@ -12,9 +13,11 @@ export default class ResultDetailsScreen extends Component {
 
     render() {
         return (
-            <Provider store={store}>
+            // <Provider store={store}>
+            <View>
                 <CardList />
-            </Provider>
+            </View>
+            // </Provider>
         );
     }
 }

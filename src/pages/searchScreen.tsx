@@ -7,6 +7,7 @@ import store from '~/store';
 
 // import { Lalala } from '~/components/FormSearch/index';
 import { View } from 'react-native';
+import { Button } from 'react-native-paper';
 
 export default class SearchScreen extends Component {
     static navigationOptions = {
@@ -15,11 +16,14 @@ export default class SearchScreen extends Component {
 
     render() {
         return (
-            <Provider store={store}>
-                <View>
-                    <CardList />
-                </View>
-            </Provider>
+            // <Provider store={store}>
+            <View>
+                <CardList />
+                <Button icon="add-a-photo" mode="contained" onPress={() => console.log('Pressed')}>
+                    Press me
+                </Button>
+            </View>
+            // </Provider>
         );
     }
 }
