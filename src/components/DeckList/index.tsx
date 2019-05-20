@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+
 import { bindActionCreators, Dispatch } from 'redux';
 
 import { ApplicationState } from '~/store';
+
 import { connect } from 'react-redux';
-import { Card, loadFailureAction, loadRequestAction, loadSuccessAction } from '~/store/ducks/cards';
+import { Deck, loadFailureAction, loadRequestAction, loadSuccessAction } from '~/store/ducks/decks';
+import { Theme } from 'react-native-paper';
+import { View, Text } from 'react-native';
+
+interface Props {
+    theme: Theme;
+}
 
 interface StateProps {
-    cards: Card[];
+    decks: Deck[];
 }
 
 interface DispatchProps {
     loadRequest(): void;
 }
 
-type Props = StateProps & DispatchProps;
+type myProps = StateProps & DispatchProps & Props;
 
-class CardList extends Component<Props> {
-    componentDidMount() {
-        const { loadRequest } = this.props;
-
-        loadRequest();
-    }
-
+class DeckList extends Component<myProps> {
     render() {
-        const { cards } = this.props;
+        const { decks } = this.props;
 
         return (
             <View>
-                {cards.map(card => (
-                    <Text key={card.cIndex}>{card.title}</Text>
+                {decks.map(card => (
+                    <Text key={card.cIndex}>{card.name}</Text>
                 ))}
             </View>
         );
@@ -37,7 +38,7 @@ class CardList extends Component<Props> {
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
-    cards: state.cards.data,
+    decks: state.decks.data,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
@@ -49,4 +50,4 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(CardList);
+)(DeckList);
