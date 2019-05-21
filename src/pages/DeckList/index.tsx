@@ -3,7 +3,6 @@ import { Theme, Text, withTheme } from 'react-native-paper';
 
 import { Container, DeckScroll } from './styles';
 import Deck from '~/components/Deck';
-import { StyleSheet } from 'react-native';
 
 interface Props {
     theme: Theme;

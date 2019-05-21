@@ -27,27 +27,23 @@ const searchStack = createStackNavigator(
     },
 );
 
-const tabs = createMaterialBottomTabNavigator(
-    {
-        decks: {
-            screen: deckStack,
-            navigationOptions: {
-                tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
-                tabBarLabel: 'Decks',
-            },
-        },
-        search: {
-            screen: searchStack,
-            navigationOptions: {
-                tabBarIcon: ({ size, color }) => <Icon name="feature-search-outline" size={size} color={color} />,
-                tabBarLabel: 'Search',
-            },
+//  TODO: Criar ícones com thema corretamente
+const tabs = createMaterialBottomTabNavigator({
+    decks: {
+        screen: deckStack,
+        navigationOptions: {
+            tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
+            tabBarLabel: 'Decks',
         },
     },
-    {
-        initialRouteName: 'search',
+    search: {
+        screen: searchStack,
+        navigationOptions: {
+            tabBarIcon: ({ size, color }) => <Icon name="feature-search-outline" size={size} color={color} />,
+            tabBarLabel: 'Search',
+        },
     },
-);
+});
 
 const navStack = createStackNavigator(
     { home: tabs },

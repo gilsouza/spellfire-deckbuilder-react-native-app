@@ -5,9 +5,7 @@ export const DeckTitle = styled.Text.attrs({
     numberOfLines: 1,
     ellipsizeMode: 'tail',
 })(({ color }) => ({
-    paddingLeft: 4,
-    paddingBottom: 4,
-    paddingRight: 4,
+    padding: 8,
     fontSize: 16,
     color: color,
 }));
@@ -15,9 +13,6 @@ export const DeckTitle = styled.Text.attrs({
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    content: {
-        padding: 4,
     },
     title: {
         marginLeft: 10,
@@ -34,12 +29,12 @@ export const styles = StyleSheet.create({
         marginRight: 18,
     },
     deckContainer: {
-        height: Dimensions.get('window').width / 2 - 8,
-        width: Dimensions.get('window').width / 2 - 16,
-        padding: 4,
-        marginTop: 15,
+        height: Dimensions.get('window').width / 2 + 54,
+        width: Dimensions.get('window').width / 2 - 20,
+        marginLeft: 6,
+        marginTop: 10,
     },
     deckCover: {
-        height: Dimensions.get('window').width / 2 - 90,
+        height: Dimensions.get('window').width / 2 - 20,
     },
 });

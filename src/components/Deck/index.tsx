@@ -1,9 +1,8 @@
 import { withTheme, Theme, Card as PaperDeck, IconButton, Title } from 'react-native-paper';
-import { Component } from 'react';
 import { Card } from '~/store/ducks/cards';
 import { DeckTitle, styles } from './style';
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React, { Component } from 'react';
+import { ToastAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
@@ -39,17 +38,26 @@ class Deck extends Component<myProps> {
                     <IconButton
                         icon={({ size, color }) => <Icon name="share-variant" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
-                        onPress={() => {}}
+                        onPress={() => {
+                            //  TODO:
+                            ToastAndroid.show('Exportação ainda não implementada', ToastAndroid.LONG);
+                        }}
                     />
                     <IconButton
                         icon={({ size, color }) => <Icon name="flask" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
-                        onPress={() => {}}
+                        onPress={() => {
+                            //  TODO:
+                            ToastAndroid.show('Lab Deck ainda não implementado', ToastAndroid.LONG);
+                        }}
                     />
                     <IconButton
                         icon={({ size, color }) => <Icon name="dots-vertical" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
-                        onPress={() => {}}
+                        onPress={() => {
+                            //  TODO:
+                            ToastAndroid.show('Opções ainda não implementado', ToastAndroid.LONG);
+                        }}
                     />
                 </PaperDeck.Actions>
             </PaperDeck>

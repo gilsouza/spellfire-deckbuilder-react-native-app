@@ -6,12 +6,16 @@ export const Container = styled.View(({ background }) => ({
     background: background,
 }));
 
-export const DeckScroll = styled.ScrollView`
+export const DeckScroll = styled.ScrollView.attrs({
+    contentContainerStyle: {
+        padding: 4,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+})`
     flex: 1;
     padding-left: 10px;
     padding-right: 10px;
-    /* flex-direction: row;
-    flex-wrap: wrap; */
 `;
 
 export const styles = StyleSheet.create({
