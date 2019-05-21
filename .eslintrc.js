@@ -1,5 +1,8 @@
 // ref: https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
 module.exports = {
+    env: {
+        jest: true,
+    },
     parser: '@typescript-eslint/parser', // Specifies the ESLint parser
     extends: [
         'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
@@ -14,14 +17,20 @@ module.exports = {
             jsx: true, // Allows for the parsing of JSX
         },
     },
+    plugins: ['react', 'import', 'jsx-a11y', 'prettier'],
     rules: {
         // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
         '@typescript-eslint/explicit-member-accessibility': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off'
-
     },
     settings: {
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx']
+        },
+        'import/resolver': {
+            typescript: {},
+        },
         react: {
             version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
         },
