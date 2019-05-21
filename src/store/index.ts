@@ -1,8 +1,8 @@
 import { createStore, Store } from 'redux';
-import { CardsState } from './ducks/cards';
-import { DecksState } from './ducks/decks';
 
 import rootReducer from './ducks/rootReducer';
+import { CardsState } from './ducks/cards/types';
+import { DecksState } from './ducks/decks/types';
 
 export interface ApplicationState {
     cards: CardsState;

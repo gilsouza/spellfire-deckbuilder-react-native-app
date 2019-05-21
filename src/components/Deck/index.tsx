@@ -20,9 +20,9 @@ interface DispatchProps {
     loadRequest(): void;
 }
 
-type myProps = StateProps & DispatchProps & Props;
+type MyProps = StateProps & DispatchProps & Props;
 
-class Deck extends Component<myProps> {
+class Deck extends Component<MyProps> {
     render() {
         const {
             theme: {

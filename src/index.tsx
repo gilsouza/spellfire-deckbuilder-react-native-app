@@ -2,7 +2,7 @@ import React from 'react';
 import Routes from './routes';
 import store from './store';
 import { StatusBar } from 'react-native';
-import { Theme, DarkTheme, Provider as PaperProvider } from 'react-native-paper';
+import { Theme, DarkTheme, Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
 
 interface State {

@@ -7,6 +7,7 @@ import { Container } from './styles';
 
 import DeckList from '../DeckList';
 import Search from '../Search';
+import { NavigationScreenProps } from 'react-navigation';
 
 interface Props {
     theme: Theme;
@@ -38,7 +39,7 @@ class HomeScreen extends Component<Props> {
         ],
     };
 
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = ({ navigation }: NavigationScreenProps) => {
         const params = { ...initialParams, ...navigation.state.params };
 
         return {

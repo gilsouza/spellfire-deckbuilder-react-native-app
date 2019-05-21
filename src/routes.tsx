@@ -1,13 +1,15 @@
+import React from 'react';
+
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import SearchScreen from './pages/Search';
-import React from 'react';
-
 import DeckList from '~/pages/DeckList';
+
 import AppHeader from './components/AppHeader';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+// import { NavigationScreenProps } from 'react-navigation';
 
 const deckStack = createStackNavigator(
     { home: DeckList },
@@ -48,7 +50,7 @@ const tabs = createMaterialBottomTabNavigator({
 const navStack = createStackNavigator(
     { home: tabs },
     {
-        defaultNavigationOptions: ({ navigation }) => ({
+        defaultNavigationOptions: () => ({
             header: <AppHeader />,
         }),
     },
