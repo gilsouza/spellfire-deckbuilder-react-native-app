@@ -10,13 +10,6 @@ interface Props {
 
 interface State {}
 
-// const initialParams = {
-//     showLeftIcon: true,
-//     showSubtitle: true,
-//     showSearchIcon: true,
-//     showMoreIcon: true,
-// };
-
 class AppHeader extends Component<Props, State> {
     render() {
         return (
