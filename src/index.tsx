@@ -7,13 +7,11 @@ import { Provider as StoreProvider } from 'react-redux';
 
 interface State {
     theme: Theme;
-    // rtl: boolean;
 }
 
 export class App extends React.Component<{}, State> {
     state = {
         theme: DarkTheme,
-        // rtl: I18nManager.isRTL,
     };
 
     render() {

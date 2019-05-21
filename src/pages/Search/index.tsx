@@ -11,31 +11,31 @@ interface Props {
 
 interface States {}
 
-const initialParams = {
-    showLeftIcon: true,
-    showSubtitle: true,
-    showSearchIcon: true,
-    showMoreIcon: true,
-};
+// const initialParams = {
+//     showLeftIcon: true,
+//     showSubtitle: true,
+//     showSearchIcon: true,
+//     showMoreIcon: true,
+// };
 
 class SearchScreen extends Component<Props> {
-    static title = 'Appbar';
-    static navigationOptions = ({ navigation }) => {
-        const params = { ...initialParams, ...navigation.state.params };
+    // static navigationOptions = ({ navigation }) => {
+    //     const params = { ...initialParams, ...navigation.state.params };
 
-        return {
-            header: (
-                <Appbar.Header>
-                    <Appbar.Content title="Spellfire Deck Builder" />
-                    <Appbar.Action
-                        icon={({ size, color }) => <Icon name="import" size={size} color={color} />}
-                        onPress={() => console.log('Importar')}
-                    />
-                    <Appbar.Action icon="settings" onPress={() => console.log('Settings')} />
-                </Appbar.Header>
-            ),
-        };
-    };
+    //     return {
+    //         tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
+    //         // header: (
+    //         //     <Appbar.Header>
+    //         //         <Appbar.Content title="Spellfire Deck Builderaaaaaa" />
+    //         //         <Appbar.Action
+    //         //             icon={({ size, color }) => <Icon name="import" size={size} color={color} />}
+    //         //             onPress={() => console.log('Importar')}
+    //         //         />
+    //         //         <Appbar.Action icon="settings" onPress={() => console.log('Settings')} />
+    //         //     </Appbar.Header>
+    //         // ),
+    //     };
+    // };
 
     render() {
         const {
@@ -46,7 +46,7 @@ class SearchScreen extends Component<Props> {
 
         return (
             <Container background={this.props.theme.colors.background}>
-                <Text>a</Text>
+                <Text>b</Text>
             </Container>
         );
     }
