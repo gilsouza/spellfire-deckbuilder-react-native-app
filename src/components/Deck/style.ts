@@ -8,7 +8,7 @@ export const DeckTitle = styled.Text.attrs({
     paddingLeft: 4,
     paddingBottom: 4,
     paddingRight: 4,
-    fontSize: 18,
+    fontSize: 16,
     color: color,
 }));
 
@@ -26,6 +26,8 @@ export const styles = StyleSheet.create({
     cardActions: {
         flex: 1,
         justifyContent: 'center',
+        padding: 0,
+        margin: 0,
     },
     cardIconButton: {
         marginLeft: 18,
@@ -33,7 +35,7 @@ export const styles = StyleSheet.create({
     },
     deckContainer: {
         height: Dimensions.get('window').width / 2 - 8,
-        width: '50%',
+        width: Dimensions.get('window').width / 2 - 16,
         padding: 4,
         marginTop: 15,
     },

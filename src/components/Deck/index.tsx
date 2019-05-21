@@ -37,17 +37,17 @@ class Deck extends Component<myProps> {
                 <PaperDeck.Cover source={require('~/assets/card.jpg')} style={styles.deckCover} />
                 <PaperDeck.Actions style={styles.cardActions}>
                     <IconButton
-                        icon={({ size, color }) => <Icon name="share-variant" size={size + 2} color={color} />}
+                        icon={({ size, color }) => <Icon name="share-variant" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
                         onPress={() => {}}
                     />
                     <IconButton
-                        icon={({ size, color }) => <Icon name="flask" size={size + 2} color={color} />}
+                        icon={({ size, color }) => <Icon name="flask" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
                         onPress={() => {}}
                     />
                     <IconButton
-                        icon={({ size, color }) => <Icon name="dots-vertical" size={size + 2} color={color} />}
+                        icon={({ size, color }) => <Icon name="dots-vertical" size={size - 2} color={color} />}
                         style={styles.cardIconButton}
                         onPress={() => {}}
                     />
