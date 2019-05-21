@@ -7,66 +7,11 @@ import React from 'react';
 import DeckList from '~/pages/DeckList';
 import AppHeader from './components/AppHeader';
 
-// import SearchScreen from './pages/searchScreen';
-// import ResultDetailsScreen from './pages/resultDetailsScreen';
-// import DeckInfoScreen from './pages/deckScreen';
-
-// const tabDeckNavigation = createMaterialTopTabNavigator(
-//     {
-//         search: SearchScreen,
-//         detail: ResultDetailsScreen,
-//         deck: DeckInfoScreen,
-//     },
-//     {
-//         tabBarOptions: {
-//             style: {
-//                 backgroundColor: '#9e9e9e',
-//             },
-//         },
-//     },
-// );
-
-// const navStack = createStackNavigator({
-//     home: HomeScreen,
-// }, {
-//     navigationOptions: ({navigation}) => ({
-//         header: (
-//             <Appbar>
-//             </Appbar>
-//         ),
-//     })
-// });
-
-// const navStack = createStackNavigator(
-//     {
-//         home: {
-//             screen: HomeScreen,
-//         },
-//     },
-//     {
-//         defaultNavigationOptions: ({ navigation }) => ({
-//             header: (
-//                 <Appbar.Header>
-//                     <Appbar.Content title="Spellfire Deck Builderaaaaaa" />
-//                     <Appbar.Action
-//                         icon={({ size, color }) => <Icon name="import" size={size} color={color} />}
-//                         onPress={() => console.log('Importar')}
-//                     />
-//                     <Appbar.Action icon="settings" onPress={() => console.log('Settings')} />
-//                 </Appbar.Header>
-//             ),
-//         }),
-//     },
-// );
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const deckStack = createStackNavigator(
+    { home: DeckList },
     {
-        home: { screen: DeckList },
-    },
-    {
-        // navigationOptions: {
-        //     tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
-        // },
         defaultNavigationOptions: {
             header: null,
         },
@@ -74,38 +19,44 @@ const deckStack = createStackNavigator(
 );
 
 const searchStack = createStackNavigator(
+    { search: SearchScreen },
     {
-        search: { screen: SearchScreen },
-    },
-    {
-        // navigationOptions: {
-        //     tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
-        // },
         defaultNavigationOptions: {
             header: null,
         },
     },
 );
 
-const tabs = createMaterialBottomTabNavigator({
-    deck: { screen: deckStack },
-    search: { screen: searchStack },
-});
-
-const navStack = createStackNavigator(
+const tabs = createMaterialBottomTabNavigator(
     {
-        home: {
-            screen: tabs,
+        decks: {
+            screen: deckStack,
+            navigationOptions: {
+                tabBarIcon: ({ size, color }) => <Icon name="cards-variant" size={size} color={color} />,
+                tabBarLabel: 'Decks',
+            },
+        },
+        search: {
+            screen: searchStack,
+            navigationOptions: {
+                tabBarIcon: ({ size, color }) => <Icon name="feature-search-outline" size={size} color={color} />,
+                tabBarLabel: 'Search',
+            },
         },
     },
+    {
+        initialRouteName: 'search',
+    },
+);
+
+const navStack = createStackNavigator(
+    { home: tabs },
     {
         defaultNavigationOptions: ({ navigation }) => ({
             header: <AppHeader />,
         }),
     },
 );
-
-// initialRouteName: 'deck',
 
 const App = createAppContainer(navStack);
 
