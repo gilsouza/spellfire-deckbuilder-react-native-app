@@ -1,12 +1,8 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import HomeScreen from '~/pages/Home';
 import SearchScreen from './pages/Search';
-
-import { Appbar } from 'react-native-paper';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import DeckList from '~/pages/DeckList';
 import AppHeader from './components/AppHeader';

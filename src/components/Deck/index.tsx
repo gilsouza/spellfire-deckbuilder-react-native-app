@@ -1,9 +1,10 @@
-import { Theme, Card as CardComponent, Button, Title } from 'react-native-paper';
+import { withTheme, Theme, Card as PaperDeck, IconButton, Title } from 'react-native-paper';
 import { Component } from 'react';
 import { Card } from '~/store/ducks/cards';
-import { ApplicationState } from '~/store';
-import { styles } from './style';
+import { DeckTitle, styles } from './style';
 import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
     theme: Theme;
@@ -13,6 +14,7 @@ interface StateProps {
     cards: Card[];
     name: string;
     description: string;
+    image: string;
 }
 
 interface DispatchProps {
@@ -25,22 +27,37 @@ class Deck extends Component<myProps> {
     render() {
         const {
             theme: {
-                colors: { background },
+                colors: { background, text },
             },
         } = this.props;
 
         return (
-            <CardComponent style={styles.card}>
-                <Title>lalala</Title>
-                {/* <CardComponent.Cover source={require('../assets/forest.jpg')} /> */}
-                <CardComponent.Actions>
-                    <Button onPress={() => {}}>Share</Button>
-                    <Button onPress={() => {}}>Explore</Button>
-                </CardComponent.Actions>
-            </CardComponent>
+            <PaperDeck style={styles.deckContainer}>
+                <DeckTitle color={text}> Teste Deck </DeckTitle>
+                <PaperDeck.Cover source={require('~/assets/card.jpg')} style={styles.deckCover} />
+                <PaperDeck.Actions style={styles.cardActions}>
+                    <IconButton
+                        icon={({ size, color }) => <Icon name="share-variant" size={size + 2} color={color} />}
+                        style={styles.cardIconButton}
+                        onPress={() => {}}
+                    />
+                    <IconButton
+                        icon={({ size, color }) => <Icon name="flask" size={size + 2} color={color} />}
+                        style={styles.cardIconButton}
+                        onPress={() => {}}
+                    />
+                    <IconButton
+                        icon={({ size, color }) => <Icon name="dots-vertical" size={size + 2} color={color} />}
+                        style={styles.cardIconButton}
+                        onPress={() => {}}
+                    />
+                </PaperDeck.Actions>
+            </PaperDeck>
         );
     }
 }
+
+export default withTheme(Deck);
 
 // const mapStateToProps = (state: ApplicationState) => ({
 //     deck: state.deck.data,
