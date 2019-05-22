@@ -1,10 +1,13 @@
 import SQLite from 'react-native-sqlite-storage';
 
 export default class DBClient {
-    private readonly dbName = 'testSpellfire';
-    private readonly dbLocation = 'default';
-    private dbInstance: SQLite.SQLiteDatabase;
+    private static readonly DB_NAME = 'teste.db';
+    private static readonly DB_LOCATION = 'Library';
+    private static readonly DB_CREATE_FROM = '~testSpellfire.db';
     private static instance: DBClient;
+
+    //TODO:
+    private dbInstance: SQLite.SQLiteDatabase;
 
     private constructor() {
         SQLite.DEBUG(true);
@@ -12,7 +15,7 @@ export default class DBClient {
     }
 
     public static getInstance() {
-        if (DBClient.instance) return DBClient.instance;
+        if (DBClient.instance) return DBClient.instance.getDBClient();
         else {
             DBClient.instance = new DBClient();
             return DBClient.instance.getDBClient();
@@ -23,8 +26,9 @@ export default class DBClient {
         if (this.dbInstance) return Promise.resolve(this.dbInstance);
 
         const options: SQLite.DatabaseParams = {
-            location: this.dbLocation,
-            name: this.dbName,
+            createFromLocation: DBClient.DB_CREATE_FROM,
+            location: DBClient.DB_LOCATION,
+            name: DBClient.DB_NAME,
         };
 
         return SQLite.openDatabase(options)

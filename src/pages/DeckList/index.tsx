@@ -12,6 +12,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as DecksActions from '~/store/ducks/decks/actions';
 import { connect } from 'react-redux';
+import DBClient from '~/services/database/DBClient';
+import { SQLiteDatabase, ResultSet } from 'react-native-sqlite-storage';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -67,12 +69,22 @@ class DeckList extends Component<Props, State> {
             },
         } = this.props;
 
+        DBClient.getInstance()
+            .then((a: SQLiteDatabase) => {
+                return a.executeSql('SELECT * FROM decks');
+            })
+            .then((a: ResultSet) => {
+                debugger;
+                console.log(a);
+                return a;
+            });
+
         return (
             <Container background={background}>
                 <DeckScroll>
-                    <DeckComponent />
-                    <DeckComponent />
-                    <DeckComponent />
+                    {this.props.decks.map((deck: Deck) => (
+                        <DeckComponent key={deck.dIndex} />
+                    ))}
                 </DeckScroll>
                 <FAB
                     icon="add"
