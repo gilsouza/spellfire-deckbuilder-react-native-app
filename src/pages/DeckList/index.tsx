@@ -12,8 +12,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as DecksActions from '~/store/ducks/decks/actions';
 import { connect } from 'react-redux';
-import DBClient from '~/services/database/DBClient';
-import { SQLiteDatabase, ResultSet } from 'react-native-sqlite-storage';
+// import DBClient from '~/services/database/dbClient';
+// import { SQLiteDatabase, ResultSet } from 'react-native-sqlite-storage';
+import { Decks as DeckEntity } from '~/repository/entities/decks';
+import { createConnection, getRepository } from 'typeorm/browser';
+import { getConnection } from 'typeorm';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -62,6 +65,40 @@ class DeckList extends Component<Props, State> {
         loadRequest();
     }
 
+    // connect() {
+    //     return createConnection({
+    //         type: 'react-native',
+    //         database: 'testSpellfire.db',
+    //         location: './src/repository/data/testSpellfire.db',
+    //         logging: ['error', 'query', 'schema'],
+    //         synchronize: true,
+    //         entities: [DeckEntity],
+    //     });
+    // }
+
+    async get() {
+        const deck = new DeckEntity();
+        deck.name = 'typeORM';
+        deck.description = 'typeORM';
+        deck.cards = '';
+
+        await createConnection({
+            type: 'react-native',
+            database: 'spellfire.db',
+            location: 'Library',
+            extra: {
+                createFromLocation: '~testSpellfire.db',
+            },
+            synchronize: true,
+            entities: [DeckEntity],
+            logging: true,
+        });
+        const lalala = getRepository(DeckEntity);
+        await lalala.save(deck);
+        console.log(await lalala.find());
+        // debugger;
+    }
+
     render() {
         const {
             theme: {
@@ -69,15 +106,17 @@ class DeckList extends Component<Props, State> {
             },
         } = this.props;
 
-        DBClient.getInstance()
-            .then((a: SQLiteDatabase) => {
-                return a.executeSql('SELECT * FROM decks');
-            })
-            .then((a: ResultSet) => {
-                debugger;
-                console.log(a);
-                return a;
-            });
+        // DBClient.getInstance()
+        //     .then((a: SQLiteDatabase) => {
+        //         return a.executeSql('SELECT * FROM decks');
+        //     })
+        //     .then((a: ResultSet) => {
+        //         debugger;
+        //         console.log(a);
+        //         return a;
+        //     });
+
+        this.get();
 
         return (
             <Container background={background}>
