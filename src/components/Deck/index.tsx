@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { ToastAndroid } from 'react-native';
-import {
-  Card as PaperDeck,
-  IconButton,
-  Theme,
-  withTheme
-} from 'react-native-paper';
+import { Card as PaperDeck, IconButton, Theme, withTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Card } from '~/store/ducks/cards';
 
@@ -46,7 +41,7 @@ class Deck extends Component<MyProps> {
                         style={styles.cardIconButton}
                         onPress={() => {
                             //  TODO:
-                            ToastAndroid.show('Exportação ainda não implementada', ToastAndroid.LONG);
+                            ToastAndroid.show('Exportação ainda não implementada', ToastAndroid.SHORT);
                         }}
                     />
                     <IconButton
@@ -54,7 +49,7 @@ class Deck extends Component<MyProps> {
                         style={styles.cardIconButton}
                         onPress={() => {
                             //  TODO:
-                            ToastAndroid.show('Lab Deck ainda não implementado', ToastAndroid.LONG);
+                            ToastAndroid.show('Lab Deck ainda não implementado', ToastAndroid.SHORT);
                         }}
                     />
                     <IconButton
@@ -62,7 +57,7 @@ class Deck extends Component<MyProps> {
                         style={styles.cardIconButton}
                         onPress={() => {
                             //  TODO:
-                            ToastAndroid.show('Opções ainda não implementado', ToastAndroid.LONG);
+                            ToastAndroid.show('Opções ainda não implementado', ToastAndroid.SHORT);
                         }}
                     />
                 </PaperDeck.Actions>
