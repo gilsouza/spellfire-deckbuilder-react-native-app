@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { bindActionCreators, Dispatch } from 'redux';
-
-import { ApplicationState } from '~/store';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, loadFailureAction, loadRequestAction, loadSuccessAction } from '~/store/ducks/cards';
+import { bindActionCreators, Dispatch } from 'redux';
+import { ApplicationState } from '~/store';
+import {
+  Card,
+  loadFailureAction,
+  loadRequestAction,
+  loadSuccessAction
+} from '~/store/ducks/cards';
 
 interface StateProps {
     cards: Card[];

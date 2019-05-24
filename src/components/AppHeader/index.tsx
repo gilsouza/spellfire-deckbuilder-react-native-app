@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-
 import { ToastAndroid } from 'react-native';
-
 import { Appbar, Theme, withTheme } from 'react-native-paper';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {

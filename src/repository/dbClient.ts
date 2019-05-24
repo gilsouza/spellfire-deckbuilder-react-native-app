@@ -1,11 +1,11 @@
-import SQLite from 'react-native-sqlite-storage';
-import { createConnection, Connection } from 'typeorm/browser';
+import { Connection, createConnection } from 'typeorm/browser';
 import { ReactNativeConnectionOptions } from 'typeorm/browser/driver/react-native/ReactNativeConnectionOptions';
-import { Decks } from './entities/decks';
+
 import { Cards } from './entities/cards';
 import { CardsAttributes } from './entities/cardsAttributes';
 import { CardsUses } from './entities/cardsUses';
 import { DeckJoinCards } from './entities/deckJoinCards';
+import { Decks } from './entities/decks';
 
 export default class DBClient {
     private static readonly DB_NAME = 'Spellfire.db';

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-
-import { Appbar, Theme, withTheme, BottomNavigation } from 'react-native-paper';
+import { Appbar, BottomNavigation, Theme, withTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import { Container } from './styles';
+import { NavigationScreenProps } from 'react-navigation';
 
 import DeckList from '../DeckList';
 import Search from '../Search';
-import { NavigationScreenProps } from 'react-navigation';
+import { Container } from './styles';
 
 interface Props {
     theme: Theme;

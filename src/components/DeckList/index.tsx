@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-
-import { bindActionCreators, Dispatch } from 'redux';
-
-import { ApplicationState } from '~/store';
-
-import { connect } from 'react-redux';
-import { Deck, loadFailureAction, loadRequestAction, loadSuccessAction } from '~/store/ducks/decks';
+import { Text, View } from 'react-native';
 import { Theme } from 'react-native-paper';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { ApplicationState } from '~/store';
+import {
+  Deck,
+  loadFailureAction,
+  loadRequestAction,
+  loadSuccessAction
+} from '~/store/ducks/decks';
 
 interface Props {
     theme: Theme;

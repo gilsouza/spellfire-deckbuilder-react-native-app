@@ -1,11 +1,11 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
+import { DarkTheme, Provider as PaperProvider, Theme } from 'react-native-paper';
+import { Provider as StoreProvider } from 'react-redux';
+
+import DBClient from './repository/dbClient';
 import Routes from './routes';
 import store from './store';
-
-import { StatusBar } from 'react-native';
-import { Theme, DarkTheme, Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
-import { Provider as StoreProvider } from 'react-redux';
-import DBClient from './repository/dbClient';
 
 interface State {
     theme: Theme;

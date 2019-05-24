@@ -1,4 +1,4 @@
-import { Card } from '../cards/types';
+import { Deck } from '../deck/types';
 
 /**
  * Actions Types
@@ -7,23 +7,9 @@ import { Card } from '../cards/types';
  * @enum {number}
  */
 export enum DecksTypes {
-    LOAD_REQUEST = '@decks/LOAD_REQUEST',
-    LOAD_SUCCESS = '@decks/LOAD_SUCCESS',
-    LOAD_FAILURE = '@decks/LOAD_FAILURE',
-}
-
-/**
- * Data type in State
- *
- * @export
- * @interface Deck
- */
-export interface Deck {
-    dIndex: number;
-    name: string;
-    description: string;
-    image: string;
-    cards: Card[];
+    LOAD_REQUEST = '@deck/LOAD_REQUEST',
+    LOAD_SUCCESS = '@deck/LOAD_SUCCESS',
+    LOAD_FAILURE = '@deck/LOAD_FAILURE',
 }
 
 /**

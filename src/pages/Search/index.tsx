@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Appbar, Theme, Text, withTheme } from 'react-native-paper';
+import { Text, Theme, withTheme } from 'react-native-paper';
+import { NavigationProp } from 'react-navigation';
 
 import { Container } from './styles';
-import { NavigationProp } from 'react-navigation';
 
 interface Props {
     theme: Theme;

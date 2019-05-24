@@ -1,5 +1,5 @@
+import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import { StyleSheet, Dimensions } from 'react-native';
 
 export const DeckTitle = styled.Text.attrs({
     numberOfLines: 1,

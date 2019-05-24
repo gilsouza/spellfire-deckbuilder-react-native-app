@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
+
 import { Cards } from './cards';
 
 @Entity('')

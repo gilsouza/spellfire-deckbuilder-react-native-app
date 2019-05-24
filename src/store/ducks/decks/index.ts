@@ -1,5 +1,6 @@
 import { Reducer } from 'redux';
-import { DecksTypes, DecksState } from './types';
+
+import { DecksState, DecksTypes } from './types';
 
 const INITIAL_STATE: DecksState = {
     data: [

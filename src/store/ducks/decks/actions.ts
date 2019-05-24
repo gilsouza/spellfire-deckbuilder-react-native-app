@@ -1,5 +1,7 @@
 import { action } from 'typesafe-actions';
-import { DecksTypes, Deck } from './types';
+
+import { Deck } from '../deck/types';
+import { DecksTypes } from './types';
 
 export const loadRequest = () => action(DecksTypes.LOAD_REQUEST);
 

@@ -1,4 +1,14 @@
-import { BaseEntity, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
+
 import { CardsAttributes } from './cardsAttributes';
 import { CardsUses } from './cardsUses';
 import { DeckJoinCards } from './deckJoinCards';

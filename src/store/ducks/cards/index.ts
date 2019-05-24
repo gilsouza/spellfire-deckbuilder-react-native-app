@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { CardsState, CardsTypes } from './types';
 
 const INITIAL_STATE: CardsState = {

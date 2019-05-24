@@ -1,17 +1,17 @@
 import React from 'react';
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
-import SearchScreen from './pages/Search';
 import DeckList from '~/pages/DeckList';
 
 import AppHeader from './components/AppHeader';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import DeckEdit from './pages/DeckEdit';
+import SearchScreen from './pages/Search';
 
 const deckStack = createStackNavigator(
-    { home: DeckList },
+    {
+        home: DeckList,
+    },
     {
         defaultNavigationOptions: {
             header: null,
@@ -47,7 +47,7 @@ const tabs = createMaterialBottomTabNavigator({
 });
 
 const navStack = createStackNavigator(
-    { home: tabs },
+    { home: tabs, deckEdit: DeckEdit },
     {
         defaultNavigationOptions: () => ({
             header: <AppHeader />,

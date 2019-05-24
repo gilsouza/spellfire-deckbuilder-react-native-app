@@ -1,6 +1,14 @@
-import { BaseEntity, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Decks } from './decks';
+import {
+  BaseEntity,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
+
 import { Cards } from './cards';
+import { Decks } from './decks';
 
 @Entity('')
 @Index('decks_join_dIndex', ['dIndex'])

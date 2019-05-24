@@ -1,9 +1,15 @@
-import { withTheme, Theme, Card as PaperDeck, IconButton, Title } from 'react-native-paper';
-import { Card } from '~/store/ducks/cards';
-import { DeckTitle, styles } from './style';
 import React, { Component } from 'react';
 import { ToastAndroid } from 'react-native';
+import {
+  Card as PaperDeck,
+  IconButton,
+  Theme,
+  withTheme
+} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Card } from '~/store/ducks/cards';
+
+import { DeckTitle, styles } from './style';
 
 interface Props {
     theme: Theme;

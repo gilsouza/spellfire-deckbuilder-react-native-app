@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Theme, withTheme, FAB } from 'react-native-paper';
+import { ToastAndroid } from 'react-native';
+import { FAB, Theme, withTheme } from 'react-native-paper';
+import { NavigationScreenProps } from 'react-navigation';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { createConnection, getRepository } from 'typeorm/browser';
+import DeckComponent from '~/components/Deck';
+import DBClient from '~/repository/dbClient';
+import { Decks as DeckEntity } from '~/repository/entities/decks';
+import { ApplicationState } from '~/store';
+import { Deck } from '~/store/ducks/deck/types';
+import * as DecksActions from '~/store/ducks/decks/actions';
 
 import { Container, DeckScroll, styles } from './styles';
-import DeckComponent from '~/components/Deck';
-import { ToastAndroid } from 'react-native';
-import { NavigationScreenProps } from 'react-navigation';
-import { ApplicationState } from '~/store';
-import { Deck } from '~/store/ducks/decks/types';
-
-import { bindActionCreators, Dispatch } from 'redux';
-
-import * as DecksActions from '~/store/ducks/decks/actions';
-import { connect } from 'react-redux';
-import { Decks as DeckEntity } from '~/repository/entities/decks';
-import { createConnection, getRepository } from 'typeorm/browser';
-import { getConnection, getManager } from 'typeorm';
-import DBClient from '~/repository/dbClient';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -120,6 +117,7 @@ class DeckList extends Component<Props, State> {
                     color="#FFF"
                     style={[styles.fab, { backgroundColor: primary }]}
                     onPress={() => {
+                        this.props.navigation.navigate('deckEdit');
                         ToastAndroid.show('Adição de Deck ainda não implementado', ToastAndroid.LONG);
                     }}
                 />

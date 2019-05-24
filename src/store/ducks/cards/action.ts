@@ -1,5 +1,6 @@
 import { action } from 'typesafe-actions';
-import { CardsTypes, Card } from './types';
+
+import { Card, CardsTypes } from './types';
 
 export const loadRequest = () => action(CardsTypes.LOAD_REQUEST);
 
