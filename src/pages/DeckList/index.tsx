@@ -12,11 +12,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as DecksActions from '~/store/ducks/decks/actions';
 import { connect } from 'react-redux';
-// import DBClient from '~/services/database/dbClient';
-// import { SQLiteDatabase, ResultSet } from 'react-native-sqlite-storage';
 import { Decks as DeckEntity } from '~/repository/entities/decks';
 import { createConnection, getRepository } from 'typeorm/browser';
-import { getConnection } from 'typeorm';
+import { getConnection, getManager } from 'typeorm';
+import DBClient from '~/repository/dbClient';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -65,38 +64,29 @@ class DeckList extends Component<Props, State> {
         loadRequest();
     }
 
-    // connect() {
-    //     return createConnection({
-    //         type: 'react-native',
-    //         database: 'testSpellfire.db',
-    //         location: './src/repository/data/testSpellfire.db',
-    //         logging: ['error', 'query', 'schema'],
-    //         synchronize: true,
-    //         entities: [DeckEntity],
-    //     });
-    // }
-
     async get() {
         const deck = new DeckEntity();
         deck.name = 'typeORM';
         deck.description = 'typeORM';
-        deck.cards = '';
 
-        await createConnection({
-            type: 'react-native',
-            database: 'spellfire.db',
-            location: 'Library',
-            extra: {
-                createFromLocation: '~testSpellfire.db',
-            },
-            synchronize: true,
-            entities: [DeckEntity],
-            logging: true,
-        });
+        // await createConnection({
+        //     type: 'react-native',
+        //     database: 'spellfire.db',
+        //     location: 'Library',
+        //     extra: {
+        //         createFromLocation: '~testSpellfire.db',
+        //     },
+        //     synchronize: true,
+        //     entities: [DeckEntity],
+        //     logging: true,
+        // });
+
+        await DBClient.createConnection();
+
         const lalala = getRepository(DeckEntity);
         await lalala.save(deck);
         console.log(await lalala.find());
-        // debugger;
+        //     // debugger;
     }
 
     render() {
@@ -116,7 +106,7 @@ class DeckList extends Component<Props, State> {
         //         return a;
         //     });
 
-        this.get();
+        // this.get();
 
         return (
             <Container background={background}>

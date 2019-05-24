@@ -9,7 +9,6 @@ import DeckList from '~/pages/DeckList';
 import AppHeader from './components/AppHeader';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import { NavigationScreenProps } from 'react-navigation';
 
 const deckStack = createStackNavigator(
     { home: DeckList },

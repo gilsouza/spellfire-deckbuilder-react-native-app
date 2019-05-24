@@ -1,9 +1,9 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { DeckJoinCards } from './deckJoinCards';
 
 @Entity('')
-// @Index('decks_dIndex', ['dIndex'])
-// @Index('sqlite_autoindex_decks_1', ['dIndex'], { unique: true })
-export class Decks {
+@Index('sqlite_autoindex_decks_1', ['dIndex'], { unique: true })
+export class Decks extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'integer',
         name: 'dIndex',
@@ -28,9 +28,11 @@ export class Decks {
     })
     public image: number | null;
 
-    @Column('text', {
-        nullable: true,
-        name: 'cards',
-    })
-    public cards: string | null;
+    @OneToMany(type => DeckJoinCards, deck_join_cards => deck_join_cards.dIndex)
+    public deckJoinCardss: DeckJoinCards[];
+
+    public constructor(init?: Partial<Decks>) {
+        super();
+        Object.assign(this, init);
+    }
 }

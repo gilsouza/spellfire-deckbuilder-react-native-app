@@ -1,13 +1,14 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Attributes } from './attributes';
-import { Uses } from './uses';
+import { BaseEntity, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { CardsAttributes } from './cardsAttributes';
+import { CardsUses } from './cardsUses';
+import { DeckJoinCards } from './deckJoinCards';
 
 @Entity('')
-@Index('cards_Attributes', ['aIndex'])
-@Index('cards_Uses', ['uIndex'])
+@Index('cards_uIndex', ['uIndex'])
 @Index('cards_cIndex', ['cIndex'])
+@Index('cards_aIndex', ['aIndex'])
 @Index('sqlite_autoindex_cards_1', ['cIndex'], { unique: true })
-export class Cards {
+export class Cards extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'integer',
         name: 'cIndex',
@@ -16,71 +17,79 @@ export class Cards {
 
     @Column('text', {
         nullable: false,
-        name: 'Collection',
+        name: 'collection',
     })
-    public Collection: string;
+    public collection: string;
 
     @Column('smallint', {
         nullable: false,
         width: 6,
-        name: 'Number',
+        name: 'number',
     })
-    public Number: number;
+    public number: number;
 
     @Column('varchar', {
         nullable: true,
         length: 9,
         default: () => 'NULL',
-        name: 'Bonus',
+        name: 'bonus',
     })
-    public Bonus: string | null;
+    public bonus: string | null;
 
     @Column('text', {
         nullable: false,
-        name: 'Type',
+        name: 'type',
     })
-    public Type: string;
+    public type: string;
 
     @Column('text', {
         nullable: false,
-        name: 'World',
+        name: 'world',
     })
-    public World: string;
+    public world: string;
 
     @Column('varchar', {
         nullable: false,
         length: 42,
-        name: 'Title',
+        name: 'title',
     })
-    public Title: string;
+    public title: string;
 
     @Column('varchar', {
         nullable: true,
         length: 790,
         default: () => 'NULL',
-        name: 'Text',
+        name: 'text',
     })
-    public Text: string | null;
+    public text: string | null;
 
     @Column('text', {
         nullable: false,
-        name: 'Frequency',
+        name: 'frequency',
     })
-    public Frequency: string;
+    public frequency: string;
 
     @Column('varchar', {
         nullable: true,
         length: 158,
         default: () => 'NULL',
-        name: 'Blueline',
+        name: 'blueline',
     })
-    public Blueline: string | null;
+    public blueline: string | null;
 
-    @ManyToOne(type => Attributes, attributes => Attributes.cardss, { nullable: false })
+    @ManyToOne(type => CardsAttributes, cards_attributes => cards_attributes.cardss, { nullable: false })
     @JoinColumn({ name: 'aIndex' })
-    public aIndex: Attributes | null;
+    public aIndex: CardsAttributes | null;
 
-    @ManyToOne(type => Uses, uses => Uses.cardss, { nullable: false })
+    @ManyToOne(type => CardsUses, cards_uses => cards_uses.cardss, { nullable: false })
     @JoinColumn({ name: 'uIndex' })
-    public uIndex: Uses | null;
+    public uIndex: CardsUses | null;
+
+    @OneToMany(type => DeckJoinCards, deck_join_cards => deck_join_cards.cIndex)
+    public deckJoinCardss: DeckJoinCards[];
+
+    public constructor(init?: Partial<Cards>) {
+        super();
+        Object.assign(this, init);
+    }
 }
