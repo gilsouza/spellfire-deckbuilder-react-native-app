@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
 import { Appbar, Text, Theme, withTheme } from 'react-native-paper';
 import { NavigationScreenProps } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -46,7 +46,12 @@ export class DeckEdit extends Component<Props, State> {
                 <Appbar.Header>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
                     <Appbar.Content title={navigation.getParam('deckName', 'Edit Deck')} subtitle={null} />
-                    <Appbar.Action icon="more-vert" onPress={() => {}} />
+                    <Appbar.Action
+                        icon="more-vert"
+                        onPress={() => {
+                            ToastAndroid.show('Menu não implementado', ToastAndroid.SHORT);
+                        }}
+                    />
                 </Appbar.Header>
             ),
         };

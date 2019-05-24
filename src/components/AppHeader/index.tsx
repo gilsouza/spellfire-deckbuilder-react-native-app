@@ -18,14 +18,14 @@ class AppHeader extends Component<Props, State> {
                     icon={({ size, color }) => <Icon name="import" size={size} color={color} />}
                     onPress={() => {
                         //  TODO:
-                        ToastAndroid.show('Importação ainda não implementada', ToastAndroid.LONG);
+                        ToastAndroid.show('Importação ainda não implementada', ToastAndroid.SHORT);
                     }}
                 />
                 <Appbar.Action
                     icon="settings"
                     onPress={() => {
                         //  TODO:
-                        ToastAndroid.show('Opções ainda não implementado', ToastAndroid.LONG);
+                        ToastAndroid.show('Opções ainda não implementado', ToastAndroid.SHORT);
                     }}
                 />
             </Appbar.Header>

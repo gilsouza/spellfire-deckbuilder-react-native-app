@@ -118,7 +118,7 @@ class DeckList extends Component<Props, State> {
                     style={[styles.fab, { backgroundColor: primary }]}
                     onPress={() => {
                         this.props.navigation.navigate('deckEdit');
-                        ToastAndroid.show('Adição de Deck ainda não implementado', ToastAndroid.LONG);
+                        ToastAndroid.show('Adição de Deck ainda não implementado', ToastAndroid.SHORT);
                     }}
                 />
             </Container>
