@@ -7,9 +7,9 @@ import { Deck } from '../deck/types';
  * @enum {number}
  */
 export enum DecksTypes {
-    LOAD_REQUEST = '@deck/LOAD_REQUEST',
-    LOAD_SUCCESS = '@deck/LOAD_SUCCESS',
-    LOAD_FAILURE = '@deck/LOAD_FAILURE',
+    LOAD_REQUEST = '@decks/LOAD_REQUEST',
+    LOAD_SUCCESS = '@decks/LOAD_SUCCESS',
+    LOAD_FAILURE = '@decks/LOAD_FAILURE',
 }
 
 /**

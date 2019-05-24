@@ -1,11 +1,4 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { BaseEntity, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { DeckJoinCards } from './deckJoinCards';
 
@@ -30,11 +23,11 @@ export class Decks extends BaseEntity {
     })
     public description: string | null;
 
-    @Column('integer', {
+    @Column('text', {
         nullable: true,
         name: 'image',
     })
-    public image: number | null;
+    public image: string | null;
 
     @OneToMany(type => DeckJoinCards, deck_join_cards => deck_join_cards.dIndex)
     public deckJoinCardss: DeckJoinCards[];

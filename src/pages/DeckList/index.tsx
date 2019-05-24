@@ -7,7 +7,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { createConnection, getRepository } from 'typeorm/browser';
 import DeckComponent from '~/components/Deck';
 import DBClient from '~/repository/dbClient';
-import { Decks as DeckEntity } from '~/repository/entities/decks';
+import { Decks as DeckEntity, Decks } from '~/repository/entities/decks';
 import { ApplicationState } from '~/store';
 import { Deck } from '~/store/ducks/deck/types';
 import * as DecksActions from '~/store/ducks/decks/actions';
@@ -80,9 +80,12 @@ class DeckList extends Component<Props, State> {
 
         await DBClient.createConnection();
 
-        const lalala = getRepository(DeckEntity);
-        await lalala.save(deck);
-        console.log(await lalala.find());
+        // const lalala = getRepository(DeckEntity);
+        // await lalala.save(deck);
+        // console.log(await lalala.find());
+
+        console.log(await Decks.find());
+
         //     // debugger;
     }
 
@@ -103,7 +106,7 @@ class DeckList extends Component<Props, State> {
         //         return a;
         //     });
 
-        // this.get();
+        this.get();
 
         return (
             <Container background={background}>
