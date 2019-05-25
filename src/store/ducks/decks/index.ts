@@ -18,11 +18,11 @@ const INITIAL_STATE: DecksState = {
 
 const reducer: Reducer<DecksState> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case DecksTypes.LOAD_REQUEST:
+        case DecksTypes.FIND_DB_REQUEST:
             return { ...state, loading: true };
-        case DecksTypes.LOAD_SUCCESS:
+        case DecksTypes.FIND_DB_SUCCESS:
             return { ...state, loading: false, error: false, data: action.payload.data };
-        case DecksTypes.LOAD_FAILURE:
+        case DecksTypes.FIND_DB_FAILURE:
             debugger;
             return { ...state, loading: false, error: true, data: [] };
         default:

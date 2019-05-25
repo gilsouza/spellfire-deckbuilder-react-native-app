@@ -3,8 +3,8 @@ import { action } from 'typesafe-actions';
 import { Deck } from '../deck/types';
 import { DecksTypes } from './types';
 
-export const loadRequest = () => action(DecksTypes.LOAD_REQUEST);
+export const findDecksRequest = () => action(DecksTypes.FIND_DB_REQUEST);
 
-export const loadSuccess = (data: Deck[]) => action(DecksTypes.LOAD_SUCCESS, { data });
+export const findDecksSuccess = (data: Deck[]) => action(DecksTypes.FIND_DB_SUCCESS, { data });
 
-export const loadFailure = () => action(DecksTypes.LOAD_FAILURE);
+export const findDecksFailure = () => action(DecksTypes.FIND_DB_FAILURE);

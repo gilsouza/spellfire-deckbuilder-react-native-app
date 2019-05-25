@@ -23,7 +23,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-    loadRequest(): void;
+    findDecksRequest(): void;
 }
 
 type Props = StateProps & DispatchProps & OwnProps;
@@ -56,9 +56,8 @@ class DeckList extends Component<Props, State> {
     // };
 
     componentDidMount() {
-        const { loadRequest } = this.props;
-
-        loadRequest();
+        const { findDecksRequest } = this.props;
+        findDecksRequest();
     }
 
     async get() {

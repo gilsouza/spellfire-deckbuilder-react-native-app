@@ -4,15 +4,15 @@ import DBClient from '~/repository/dbClient';
 
 import { Decks } from '~/repository/entities/decks';
 
-import { loadSuccess, loadFailure } from './actions';
+import { findDecksSuccess, findDecksFailure } from './actions';
 
-export function* load() {
+export function* findDecks() {
     try {
         const connection = yield DBClient.createConnection();
         const decks = yield call([Decks, 'find']);
 
-        yield put(loadSuccess(decks));
+        yield put(findDecksSuccess(decks));
     } catch (err) {
-        yield put(loadFailure());
+        yield put(findDecksFailure());
     }
 }
