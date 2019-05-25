@@ -106,7 +106,7 @@ class DeckList extends Component<Props, State> {
         //         return a;
         //     });
 
-        this.get();
+        // this.get();
 
         return (
             <Container background={background}>
