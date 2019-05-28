@@ -2,15 +2,16 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import DeckList from '~/pages/DeckList';
 
 import AppHeader from './components/AppHeader';
+
 import DeckEdit from './pages/DeckEdit';
 import SearchScreen from './pages/Search';
+import DeckListPage from '~/pages/DeckList';
 
 const deckStack = createStackNavigator(
     {
-        home: DeckList,
+        home: DeckListPage,
     },
     {
         defaultNavigationOptions: {
