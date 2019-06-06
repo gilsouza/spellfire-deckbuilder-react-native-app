@@ -14,7 +14,7 @@ interface OwnProps extends NavigationScreenProps {
 
 type Props = OwnProps;
 
-const Deck = (props: Props) => {
+const DeckCard = (props: Props) => {
     const {
         theme: {
             colors: { text },
@@ -65,4 +65,4 @@ const Deck = (props: Props) => {
     );
 };
 
-export default withNavigation(withTheme(Deck));
+export default withNavigation(withTheme(DeckCard));
