@@ -34,18 +34,17 @@ interface State {
 export class DeckEdit extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.props.navigation.setParams({
-            deckName: this.props.deck.name,
-        });
     }
 
     //TODO: Deixar header name mais rápido!
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = ({ navigation }: NavigationScreenProps) => {
+        const name = navigation.getParam('name');
+
         return {
             header: (
                 <Appbar.Header>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Appbar.Content title={navigation.getParam('deckName', 'Edit Deck')} subtitle={null} />
+                    <Appbar.Content title={name} subtitle={null} />
                     <Appbar.Action
                         icon="more-vert"
                         onPress={() => {

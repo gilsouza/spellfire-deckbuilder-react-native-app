@@ -20,15 +20,15 @@ export interface Card {
     cIndex: number;
     collection: string;
     number: number;
-    bonus: string;
+    bonus: string | null;
     type: string;
     world: string;
     title: string;
-    text: string;
+    text: string | null;
     frequency: string;
-    blueline: string;
-    aIndex: number;
-    uIndex: number;
+    blueline: string | null;
+    aIndex: number | null;
+    uIndex: number | null;
 }
 
 /**

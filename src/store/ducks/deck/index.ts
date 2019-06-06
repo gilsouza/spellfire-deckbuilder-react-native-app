@@ -4,9 +4,9 @@ import { DeckState, DeckTypes } from './types';
 
 const INITIAL_STATE: DeckState = {
     data: {
-        dIndex: 1,
-        name: 'Edit Deck',
-        description: 'Deck matador',
+        dIndex: null,
+        name: '',
+        description: '',
         image: '',
         cards: [],
     },

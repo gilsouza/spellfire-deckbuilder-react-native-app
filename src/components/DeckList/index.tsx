@@ -19,7 +19,7 @@ interface OwnProps extends NavigationScreenProps {
     theme: Theme;
 }
 
-interface StateProps {
+interface StateAppProps {
     decks: Deck[];
 }
 
@@ -27,22 +27,12 @@ interface DispatchProps {
     findDecksRequest(): void;
 }
 
-type Props = StateProps & DispatchProps & OwnProps;
+type Props = StateAppProps & DispatchProps & OwnProps;
 
-interface State {
-    decks: {
-        title: string;
-        image: string;
-        cards: {
-            title: string;
-            description: string;
-        }[];
-    }[];
-}
-
-class DeckList extends Component<Props, State> {
-    componentDidMount() {
-        const { findDecksRequest } = this.props;
+class DeckList extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+        const { findDecksRequest } = props;
         findDecksRequest();
     }
 
@@ -57,7 +47,7 @@ class DeckList extends Component<Props, State> {
             <Container background={background}>
                 <DeckScroll>
                     {this.props.decks.map((deck: Deck) => (
-                        <DeckComponent key={deck.dIndex} name={deck.name} image={deck.image} />
+                        <DeckComponent key={deck.dIndex} deck={deck} />
                     ))}
                 </DeckScroll>
                 <FAB
