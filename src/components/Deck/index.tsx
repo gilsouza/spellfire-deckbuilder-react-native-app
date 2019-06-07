@@ -20,24 +20,21 @@ const DeckCard = (props: Props) => {
             colors: { text },
         },
     } = props;
+    const iconSizeDecrement = -2;
 
     return (
         <PaperDeck style={styles.deckContainer}>
             <DeckTitle color={text}>{props.deck.name}</DeckTitle>
 
-            <TouchableRipple
-                onPress={() =>
-                    props.navigation.navigate('deckEdit', {
-                        deck: props.deck,
-                    })
-                }
-            >
-                <PaperDeck.Cover source={require('~/assets/card.jpg')} style={styles.deckCover} />
+            <TouchableRipple onPress={() => props.navigation.navigate('deckEdit', { deck: props.deck })}>
+                <PaperDeck.Cover source={require('~/assets/cardDefault.jpg')} style={styles.deckCover} />
             </TouchableRipple>
 
             <PaperDeck.Actions style={styles.cardActions}>
                 <IconButton
-                    icon={({ size, color }) => <Icon name="share-variant" size={size - 2} color={color} />}
+                    icon={({ size, color }) => (
+                        <Icon name="share-variant" size={size + iconSizeDecrement} color={color} />
+                    )}
                     style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:
@@ -45,7 +42,7 @@ const DeckCard = (props: Props) => {
                     }}
                 />
                 <IconButton
-                    icon={({ size, color }) => <Icon name="flask" size={size - 2} color={color} />}
+                    icon={({ size, color }) => <Icon name="flask" size={size + iconSizeDecrement} color={color} />}
                     style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:
@@ -53,7 +50,9 @@ const DeckCard = (props: Props) => {
                     }}
                 />
                 <IconButton
-                    icon={({ size, color }) => <Icon name="dots-vertical" size={size - 2} color={color} />}
+                    icon={({ size, color }) => (
+                        <Icon name="dots-vertical" size={size + iconSizeDecrement} color={color} />
+                    )}
                     style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:

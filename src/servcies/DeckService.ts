@@ -11,21 +11,10 @@ export default class DeckService {
         await DBClient.createConnection();
         const decks: Decks[] = await Decks.find();
 
-        console.log(JSON.stringify(decks));
-
         const mapToDeck = async (deckEntity: Decks): Promise<Deck> => {
             let cardsEntity: Cards[];
-            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-            try {
-                cardsEntity = await this.findDeckCards(deckEntity.dIndex);
-                console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
-            } catch (error) {
-                console.log(error);
-            }
-
+            cardsEntity = await this.findDeckCards(deckEntity.dIndex);
             let cards: Card[] = cardsEntity.map(this.cardEntityToCard);
-
-            console.log(JSON.stringify(cards));
 
             return {
                 cards: cards,
@@ -43,11 +32,11 @@ export default class DeckService {
 
     public save(): void {}
 
-    private async findDeckCards(forDeck: number): Promise<Cards[]> {
+    private async findDeckCards(forDeckId: number): Promise<Cards[]> {
         await DBClient.createConnection();
         return await Cards.createQueryBuilder('cards')
             .innerJoinAndSelect('cards.deckJoinCardss', 'deckJoinCards')
-            .where('dIndex = :dIndex', { dIndex: forDeck })
+            .where('dIndex = :dIndex', { dIndex: forDeckId })
             .getMany();
     }
 
