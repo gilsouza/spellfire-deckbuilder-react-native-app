@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, ToastAndroid } from 'react-native';
-import { Appbar, Text, Theme, withTheme } from 'react-native-paper';
-import { NavigationScreenProps } from 'react-navigation';
+import { Appbar, Text, Theme, withTheme, List, Divider } from 'react-native-paper';
+import { NavigationScreenProps, FlatList } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { ApplicationState } from '~/store';
@@ -9,11 +9,13 @@ import { Card } from '~/store/ducks/cards/types';
 import * as DeckActions from '~/store/ducks/deck/action';
 import { Deck } from '~/store/ducks/deck/types';
 
+import { Container, DeckScroll } from './styles';
+
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
 }
 
-interface StateProps {
+interface StateAppProps {
     deck: Deck;
 }
 
@@ -21,31 +23,39 @@ interface DispatchProps {
     saveRequest(): void;
 }
 
-type Props = StateProps & DispatchProps & OwnProps;
+type Props = StateAppProps & DispatchProps & OwnProps;
 
 interface State {
     editing: boolean;
-    name: string;
-    description: string;
-    image: string;
+    name: string | null;
+    description: string | null;
+    image: string | null;
     cards: Card[];
 }
 
 export class DeckEdit extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.props.navigation.setParams({
-            deckName: this.props.deck.name,
-        });
+        const deck: Deck = props.navigation.getParam('deck');
+        if (deck) {
+            this.state = {
+                description: deck.description,
+                name: deck.name,
+                cards: deck.cards,
+                image: deck.image,
+                editing: true,
+            };
+        }
     }
 
-    //TODO: Deixar header name mais rápido!
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = ({ navigation }: NavigationScreenProps) => {
+        const deck: Deck = navigation.getParam('deck');
+
         return {
             header: (
                 <Appbar.Header>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Appbar.Content title={navigation.getParam('deckName', 'Edit Deck')} subtitle={null} />
+                    <Appbar.Content title={deck.name} subtitle={null} />
                     <Appbar.Action
                         icon="more-vert"
                         onPress={() => {
@@ -57,17 +67,33 @@ export class DeckEdit extends Component<Props, State> {
         };
     };
 
-    componentDidMount() {
-        this.props.navigation.setParams({
-            deckName: this.props.deck.name,
-        });
+    renderItem({ item }) {
+        return <List.Item key={item.cIndex} title={item.title} />;
+    }
+
+    keyExtractor(item: Card) {
+        return item.cIndex;
     }
 
     render() {
+        const {
+            theme: {
+                colors: { background, primary },
+            },
+        } = this.props;
+
         return (
-            <View>
-                <Text>lalal</Text>
-            </View>
+            <Container background={background}>
+                <FlatList
+                    contentContainerStyle={{ backgroundColor: background }}
+                    ItemSeparatorComponent={Divider}
+                    renderItem={this.renderItem}
+                    keyExtractor={this.keyExtractor}
+                    data={this.state.cards}
+                />
+
+                <DeckScroll>{this.state.cards.map((card: Card) => {})}</DeckScroll>
+            </Container>
         );
     }
 }

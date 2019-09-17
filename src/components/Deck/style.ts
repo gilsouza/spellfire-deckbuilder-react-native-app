@@ -21,13 +21,11 @@ export const styles = StyleSheet.create({
     cardActions: {
         flex: 1,
         justifyContent: 'center',
-        padding: 0,
+        paddingLeft: 15,
+        paddingRight: 15,
         margin: 0,
     },
-    cardIconButton: {
-        marginLeft: 18,
-        marginRight: 18,
-    },
+    cardIconButton: {},
     deckContainer: {
         height: Dimensions.get('window').width / 2 + 40,
         width: Dimensions.get('window').width / 2 - 22,
