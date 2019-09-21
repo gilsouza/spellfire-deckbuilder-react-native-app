@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ToastAndroid, Image } from 'react-native';
-import { Appbar, Theme, withTheme, List, Divider } from 'react-native-paper';
+import { ToastAndroid } from 'react-native';
+import { Appbar, Theme, withTheme, Divider } from 'react-native-paper';
 import { NavigationScreenProps, FlatList } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -52,13 +52,14 @@ export class DeckEdit extends Component<Props, State> {
     static navigationOptions = ({ navigation }: NavigationScreenProps) => {
         const deck: Deck = navigation.getParam('deck');
 
+        // https://oblador.github.io/react-native-vector-icons/ - MaterialCommunityIcons
         return {
             header: (
                 <Appbar.Header>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
                     <Appbar.Content title={deck.name} subtitle={null} />
                     <Appbar.Action
-                        icon="more-vert"
+                        icon="dots-vertical"
                         onPress={() => {
                             ToastAndroid.show('Menu não implementado', ToastAndroid.SHORT);
                         }}

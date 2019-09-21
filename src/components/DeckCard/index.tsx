@@ -35,7 +35,6 @@ const DeckCard = (props: Props) => {
                     icon={({ size, color }) => (
                         <Icon name="share-variant" size={size + iconSizeDecrement} color={color} />
                     )}
-                    style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:
                         ToastAndroid.show('Exportação ainda não implementada', ToastAndroid.SHORT);
@@ -43,7 +42,6 @@ const DeckCard = (props: Props) => {
                 />
                 <IconButton
                     icon={({ size, color }) => <Icon name="flask" size={size + iconSizeDecrement} color={color} />}
-                    style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:
                         ToastAndroid.show('Lab Deck ainda não implementado', ToastAndroid.SHORT);
@@ -53,7 +51,6 @@ const DeckCard = (props: Props) => {
                     icon={({ size, color }) => (
                         <Icon name="dots-vertical" size={size + iconSizeDecrement} color={color} />
                     )}
-                    style={styles.cardIconButton}
                     onPress={() => {
                         //  TODO:
                         ToastAndroid.show('Opções ainda não implementado', ToastAndroid.SHORT);

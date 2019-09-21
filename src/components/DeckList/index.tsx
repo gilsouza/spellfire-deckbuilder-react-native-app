@@ -60,8 +60,9 @@ class DeckList extends Component<Props> {
                     ))}
                 </DeckScroll>
                 <FAB
-                    icon="add"
+                    icon="plus"
                     color="#FFF"
+                    theme={this.props.theme}
                     style={[styles.fab, { backgroundColor: primary }]}
                     onPress={() => {
                         this.props.navigation.navigate('deckEdit', { deck: { name: 'Novo Deck' } });
