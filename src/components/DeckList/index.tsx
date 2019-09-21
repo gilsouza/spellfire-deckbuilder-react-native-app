@@ -6,7 +6,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { FAB, Theme, withTheme } from 'react-native-paper';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
 
-import DeckComponent from '~/components/Deck';
+import DeckCard from '~/components/DeckCard';
 
 import { ApplicationState } from '~/store';
 
@@ -36,6 +36,15 @@ class DeckList extends Component<Props> {
         findDecksRequest();
     }
 
+    newDeck() {
+        const newDeck: Deck = {
+            cards: [],
+            description: '',
+            name: 'Novo Deck',
+        };
+        return newDeck;
+    }
+
     render() {
         const {
             theme: {
@@ -47,7 +56,7 @@ class DeckList extends Component<Props> {
             <Container background={background}>
                 <DeckScroll>
                     {this.props.decks.map((deck: Deck) => (
-                        <DeckComponent key={deck.dIndex} deck={deck} />
+                        <DeckCard key={deck.dIndex} deck={deck} />
                     ))}
                 </DeckScroll>
                 <FAB
@@ -55,7 +64,7 @@ class DeckList extends Component<Props> {
                     color="#FFF"
                     style={[styles.fab, { backgroundColor: primary }]}
                     onPress={() => {
-                        this.props.navigation.navigate('deckEdit');
+                        this.props.navigation.navigate('deckEdit', { deck: { name: 'Novo Deck' } });
                         ToastAndroid.show('Adição de Deck ainda não implementado', ToastAndroid.SHORT);
                     }}
                 />

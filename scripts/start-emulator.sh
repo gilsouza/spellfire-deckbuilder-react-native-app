@@ -1,4 +1,6 @@
 #!/bin/bash
+# based on https://gist.github.com/blazsolar/5ab8f89bb4a8ace692395446789943fd#file-kill-emulators-expect
+
 echo "Start emulator"
 
 if [ -z "$1" ] ; then
@@ -10,7 +12,7 @@ fi
 
 echo "Starting device $device"
 
-emulator @$device &
+emulator @$device -noaudio &
 emaulatorPid=$!
 
 echo "Wait for device"

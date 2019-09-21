@@ -19,10 +19,10 @@ export enum DeckTypes {
  * @interface Deck
  */
 export interface Deck {
-    dIndex: number | null;
+    dIndex?: number;
     name: string;
-    description: string | null;
-    image: string | null;
+    description: string;
+    image?: string;
     cards: Card[];
 }
 

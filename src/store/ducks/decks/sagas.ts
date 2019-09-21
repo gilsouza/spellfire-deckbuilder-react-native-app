@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { findDecksSuccess, findDecksFailure } from './actions';
 
-import DeckService from '~/servcies/DeckService';
+import DeckService from '~/services/DeckService';
 
 export function* findDecks() {
     try {

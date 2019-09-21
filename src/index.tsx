@@ -23,7 +23,7 @@ export class App extends React.Component<{}, State> {
     render() {
         return (
             <>
-                <StatusBar barStyle="light-content" />
+                {/* <StatusBar barStyle="light-content" /> */}
                 <StoreProvider store={store}>
                     <PaperProvider theme={this.state.theme}>
                         <Routes />

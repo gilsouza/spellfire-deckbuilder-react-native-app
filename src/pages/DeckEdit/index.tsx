@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { View, ToastAndroid } from 'react-native';
-import { Appbar, Text, Theme, withTheme, List, Divider } from 'react-native-paper';
+import { ToastAndroid, Image } from 'react-native';
+import { Appbar, Theme, withTheme, List, Divider } from 'react-native-paper';
 import { NavigationScreenProps, FlatList } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { ApplicationState } from '~/store';
 import { Card } from '~/store/ducks/cards/types';
-import * as DeckActions from '~/store/ducks/deck/action';
+import * as DeckActions from '~/store/ducks/deck/actions';
 import { Deck } from '~/store/ducks/deck/types';
 
 import { Container, DeckScroll } from './styles';
+import { CardListImage } from '~/components/CardListImage';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -27,9 +28,9 @@ type Props = StateAppProps & DispatchProps & OwnProps;
 
 interface State {
     editing: boolean;
-    name: string | null;
-    description: string | null;
-    image: string | null;
+    name: string;
+    description?: string;
+    image?: string;
     cards: Card[];
 }
 
@@ -68,11 +69,11 @@ export class DeckEdit extends Component<Props, State> {
     };
 
     renderItem({ item }) {
-        return <List.Item key={item.cIndex} title={item.title} />;
+        return <CardListImage card={item} />;
     }
 
     keyExtractor(item: Card) {
-        return item.cIndex;
+        return item.cIndex.toString();
     }
 
     render() {
@@ -92,7 +93,7 @@ export class DeckEdit extends Component<Props, State> {
                     data={this.state.cards}
                 />
 
-                <DeckScroll>{this.state.cards.map((card: Card) => {})}</DeckScroll>
+                <DeckScroll>{this.state.cards && this.state.cards.map((card: Card) => {})}</DeckScroll>
             </Container>
         );
     }
