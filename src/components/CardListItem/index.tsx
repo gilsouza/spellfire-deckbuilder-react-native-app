@@ -94,7 +94,7 @@ const imageFromtype = (type: string) => {
     }
 };
 
-export const CardListImage = (props: Props) => {
+export const CardListItem = (props: Props) => {
     const sourceImage = imageFromtype(props.card.type);
 
     return (

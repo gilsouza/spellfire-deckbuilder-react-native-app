@@ -10,7 +10,7 @@ import * as DeckActions from '~/store/ducks/deck/actions';
 import { Deck } from '~/store/ducks/deck/types';
 
 import { Container, DeckScroll } from './styles';
-import { CardListImage } from '~/components/CardListImage';
+import { CardListItem } from '~/components/CardListItem';
 
 interface OwnProps extends NavigationScreenProps {
     theme: Theme;
@@ -70,7 +70,7 @@ export class DeckEdit extends Component<Props, State> {
     };
 
     renderItem({ item }) {
-        return <CardListImage card={item} />;
+        return <CardListItem card={item} />;
     }
 
     keyExtractor(item: Card) {
@@ -94,7 +94,7 @@ export class DeckEdit extends Component<Props, State> {
                     data={this.state.cards}
                 />
 
-                <DeckScroll>{this.state.cards && this.state.cards.map((card: Card) => {})}</DeckScroll>
+                {/* <DeckScroll>{this.state.cards && this.state.cards.map((card: Card) => {})}</DeckScroll> */}
             </Container>
         );
     }
